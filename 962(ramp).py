@@ -1,4 +1,6 @@
+
 nums = [9,8,1,0,1,9,4,0,4,1]
+'''
 ramp = []
 max = 0
 for i in range(len(nums)):
@@ -20,5 +22,25 @@ for i in range(len(nums)):
             if j-i > max:
              max = j - i
 print(max)
-
+'''
 ############################ IF TIME LIMIT EXCEEDED ####################################
+nums = [9,8,1,0,1,9,4,0,4,1]
+n = len(nums)
+indices = [i for i in range(n)]
+print(indices)
+# Sort indices based on corresponding values in nums and ensure stability
+indices.sort(key=lambda i: (nums[i], i))
+print(indices)
+
+i = n  # Minimum index encountered so far
+max_width = 0
+
+# Calculate maximum width ramp
+for j in indices:
+    if j - i > max_width:
+        max_width = j - i
+    #max_width = max(max_width, i - min_index)
+    #min_index = min(min_index, i)
+    i = min(i, j)
+
+print(max_width)
